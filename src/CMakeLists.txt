@@ -8,7 +8,6 @@ SET(LIBRARY_NAME ${PROJECT_NAME})
 
 SET( SOURCES
   ProjectSupaero
-  thetered_aerial
   )
 
 FOREACH( source ${SOURCES} )

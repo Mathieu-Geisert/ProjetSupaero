@@ -1,5 +1,7 @@
 #define AVOID_SINGULARITIES 1
 
+#include <gepetto/viewer/corba/client.hh>
+
 #include <acado_toolkit.hpp>
 
 #include <acado_optimal_control.hpp>
@@ -288,6 +290,9 @@ int main( ){
     window.addSubplot( sampledProcessOutput(7),"theta" );
     window.addSubplot( sampledProcessOutput(8),"psi" );
     window.plot( );
+
+    graphics::corbaServer::ClientCpp client = graphics::corbaServer::ClientCpp();
+    client.createWindow("window");
 
     return 0;
 }

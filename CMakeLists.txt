@@ -6,7 +6,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 INCLUDE(cmake/base.cmake)
 INCLUDE(cmake/cpack.cmake)
-INCLUDE(cmake/boost.cmake)
+#INCLUDE(cmake/boost.cmake)
 
 SET(PROJECT_NAME ProjectSupaero_ACADO)
 SET(PROJECT_DESCRIPTION "acado for Supaero project : MPC for drones")
@@ -26,9 +26,8 @@ SETUP_PROJECT()
 ADD_REQUIRED_DEPENDENCY("acado")
 ADD_REQUIRED_DEPENDENCY("gepetto-viewer-corba")
 
-SEARCH_FOR_BOOST()
-
-INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
+#SEARCH_FOR_BOOST()
+#INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 
 ADD_SUBDIRECTORY(src)
 

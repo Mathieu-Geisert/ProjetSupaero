@@ -13,7 +13,6 @@ SET( SOURCES
 
 FOREACH( source ${SOURCES} )
   ADD_EXECUTABLE( ${source} ${source}.cpp)
-  PKG_CONFIG_USE_DEPENDENCY(${source} acado)
   PKG_CONFIG_USE_DEPENDENCY(${source} gepetto-viewer-corba)
   INSTALL(TARGETS ${source} DESTINATION bin)
 ENDFOREACH(source)

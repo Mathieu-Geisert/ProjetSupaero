@@ -24,6 +24,7 @@ SETUP_PROJECT()
 # --- DEPENDANCIES -----------------------------------
 # ----------------------------------------------------
 ADD_REQUIRED_DEPENDENCY("acado")
+ADD_REQUIRED_DEPENDENCY("gepetto-viewer-corba")
 
 SEARCH_FOR_BOOST()
 

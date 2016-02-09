@@ -15,6 +15,7 @@ SET(PROJECT_URL "")
 # Disable -Werror on Unix for now.
 SET(CXX_DISABLE_WERROR True)
 SET(CMAKE_VERBOSE_MAKEFILE True)
+SET(CMAKE_CXX_FLAGS "-std=c++0x")
 
 # project(${PROJECT_NAME})
 SETUP_PROJECT()

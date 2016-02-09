@@ -6,15 +6,25 @@
 
 SET(LIBRARY_NAME ${PROJECT_NAME})
 
-SET( SOURCES
-  ProjectSupaero
-  )
 
-FOREACH( source ${SOURCES} )
-  ADD_EXECUTABLE( ${source} ${source}.cpp)
-  PKG_CONFIG_USE_DEPENDENCY(${source} gepetto-viewer-corba)
-  INSTALL(TARGETS ${source} DESTINATION bin)
-ENDFOREACH(source)
+# Source files - Add here your source files
+SET(${LIBRARY_NAME}_SOURCES
+  my-file.cpp
+)
 
 
 
+
+SET(${LIBRARY_NAME}_FILES
+	${${LIBRARY_NAME}_SOURCES}
+	${${LIBRARY_NAME}_HEADERS}
+	)
+
+MESSAGE(${${LIBRARY_NAME}_FILES})
+
+ADD_LIBRARY(${LIBRARY_NAME} SHARED ${${LIBRARY_NAME}_SOURCES})
+
+PKG_CONFIG_USE_DEPENDENCY(${LIBRARY_NAME} gepetto-viewer-corba)
+
+
+INSTALL(TARGETS ${LIBRARY_NAME} DESTINATION lib)

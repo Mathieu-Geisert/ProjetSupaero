@@ -1,6 +1,6 @@
 #
 # Copyright (c) 2015 CNRS
-# Authors: Mathieu Geisert
+# Authors: Mathieu Geisert - Florian Valenza
 #
 #
 
@@ -20,7 +20,6 @@ SET(${LIBRARY_NAME}_FILES
 	${${LIBRARY_NAME}_HEADERS}
 	)
 
-MESSAGE(${${LIBRARY_NAME}_FILES})
 
 ADD_LIBRARY(${LIBRARY_NAME} SHARED ${${LIBRARY_NAME}_SOURCES})
 

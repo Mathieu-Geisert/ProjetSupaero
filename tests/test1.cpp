@@ -11,6 +11,8 @@ int main( ){
     // graphics::corbaServer::ClientCpp client = graphics::corbaServer::ClientCpp();
     // client.createWindow("window");
 
+    std::string filename = PIE_SOURCE_DIR"/data/put_here_your_meshes";
+    std::cout << filename << std::endl;
     return 0;
 }
 /* <<< end tutorial code <<< */

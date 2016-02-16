@@ -1,6 +1,6 @@
 #
 # Copyright (c) 2015 CNRS
-# Authors: Mathieu Geisert
+# Authors: Mathieu Geisert - Florian Valenza
 #
 #
 

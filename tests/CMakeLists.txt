@@ -1,5 +1,6 @@
 #
 #  Copyright 2015 CNRS
+# Authors : Mathieu Geisert - Florian Valenza
 #
 
 # --- MACROS ------------------------------------------------------------------

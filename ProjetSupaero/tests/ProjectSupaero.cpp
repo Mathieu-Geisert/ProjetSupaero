@@ -111,9 +111,9 @@ int main()
     ocp.subjectTo(-1. <= theta <= 1.);
 
     // adding roof, floor and walls constraints
-    ocp.subjectTo(-9 <= x <= 9);
-    ocp.subjectTo(-9 <= y <= 9);
-    ocp.subjectTo(1 <= z <= 9);
+    ocp.subjectTo(-15 <= x <= 15);
+    ocp.subjectTo(-15 <= y <= 15);
+    ocp.subjectTo(1 <= z <= 15);
 
     // Loading cylindrical obstacles from XML
     EnvironmentParser parser(PIE_SOURCE_DIR"/data/envsave.xml");
@@ -170,7 +170,7 @@ int main()
     {
         // setting reference from input
         auto refInput = input.getReference();
-        double refT[10] = {refInput[0], refInput[1], refInput[2], 0., 0., 0., 0., 0., 0., 0.};
+        double refT[10] = {0.5*refInput[0], 0.5*refInput[1], 0.5*refInput[2], 0., 0., 0., 0., 0., 0., 0.};
         DVector refVec(10, refT);
         VariablesGrid referenceVG (refVec, Grid{t, t+1., 2});
         alg.setReference(referenceVG);

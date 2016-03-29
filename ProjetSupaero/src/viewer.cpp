@@ -14,8 +14,9 @@ using namespace Eigen;
 Viewer::Viewer(): client()
 {
     WindowID w_id = client.createWindow("window");
-    client.createSceneWithFloor("/world");
+    client.createScene("/world");
     client.addSceneToWindow("/world",w_id);
+    client.createGroup("/world/env");
 
     se3Drone = se3::SE3::Identity();
     se3Drone.translation({0.,0.,2.});
@@ -29,7 +30,7 @@ void Viewer::createEnvironment(std::vector<Ecylinder> cylinder_list)
     int i = 1;
     for(Ecylinder cyl : cylinder_list)
     {
-        string n = "/world/cylinder"+std::to_string(i);
+        string n = "/world/env/cylinder"+std::to_string(i);
         const char* name = n.c_str();
         client.addCylinder(name, cyl.radius, sqrt(pow(cyl.x2-cyl.x1,2.f)+pow(cyl.y2-cyl.y1,2.f)+pow(cyl.z2-cyl.z1,2.f)), yellow);
 
@@ -98,7 +99,24 @@ void Viewer::createDrone(const char*  t)
 
 void Viewer::moveDrone(double x, double y, double z, double roll, double pitch, double yaw)
 {
-    se3Drone.translation({(float)x,(float)y,(float)z});
+
+    Matrix3d identity(3,3);
+    identity(0,0) = 1.;
+    identity(0,1) = 0.;
+    identity(0,2) = 0.;
+
+    identity(1,0) = 0.;
+    identity(1,1) = 1.;
+    identity(1,2) = 0.;
+
+    identity(2,0) = 0.;
+    identity(2,1) = 0.;
+    identity(2,2) = 1.;
+
+    se3Drone.rotation() = identity.cast<float>();
+    se3Drone.translation({-(float)x,-(float)y,-(float)z});
+    client.applyConfiguration("/world/env", se3Drone);
+    se3Drone.translation({0.,0.,0.});
 
     // Roll
     Matrix3d m_roll(3,3);

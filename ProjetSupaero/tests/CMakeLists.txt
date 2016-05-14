@@ -20,9 +20,11 @@ ADD_EXEC(ProjectSupaero "acado;sfml-window;sfml-system;gepetto-viewer-corba;tiny
 ADD_EXEC(test_viewer "gepetto-viewer-corba;tinyxml2;eigen3")
 ADD_EXEC(test_viewer_environment "gepetto-viewer-corba;tinyxml2;eigen3")
 ADD_EXEC(sfml_viewer "acado;sfml-window;sfml-system;gepetto-viewer-corba;tinyxml2;eigen3")
+ADD_EXEC(test_joystick "acado;sfml-window;sfml-system;gepetto-viewer-corba;tinyxml2;eigen3")
 
 
 ADD_TEST_CFLAGS(ProjectSupaero '-DPIE_SOURCE_DIR=\\\"${${PROJECT_NAME}_SOURCE_DIR}\\\"')
 ADD_TEST_CFLAGS(test_viewer '-DPIE_SOURCE_DIR=\\\"${${PROJECT_NAME}_SOURCE_DIR}\\\"')
 ADD_TEST_CFLAGS(test_viewer_environment '-DPIE_SOURCE_DIR=\\\"${${PROJECT_NAME}_SOURCE_DIR}\\\"')
 ADD_TEST_CFLAGS(sfml_viewer '-DPIE_SOURCE_DIR=\\\"${${PROJECT_NAME}_SOURCE_DIR}\\\"')
+ADD_TEST_CFLAGS(test_joystick '-DPIE_SOURCE_DIR=\\\"${${PROJECT_NAME}_SOURCE_DIR}\\\"')

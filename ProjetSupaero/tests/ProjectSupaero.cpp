@@ -81,7 +81,7 @@ int main()
     DMatrix Q(10,10);
     Q(0,0) = Q(1,1) = Q(2,2) = 1e-1;
     Q(3,3) = Q(4,4) = Q(5,5) = Q(6,6) = 1e-9;
-    Q(7,7) = Q(8,8) = Q(9,9) = 1e-3;
+    Q(7,7) = Q(8,8) = Q(9,9) = 1e-1;
 
     // Reference
     DVector refVec(10);
@@ -170,7 +170,7 @@ int main()
     {
         // setting reference from input
         auto refInput = input.getReference();
-        double refT[10] = {0.5*refInput[0], 0.5*refInput[1], 0.5*refInput[2], 0., 0., 0., 0., 0., 0., 0.};
+        double refT[10] = {1.*refInput[0], 1.*refInput[1], 1.*refInput[2], 0., 0., 0., 0., 0., 0., 0.};
         DVector refVec(10, refT);
         VariablesGrid referenceVG (refVec, Grid{t, t+1., 2});
         alg.setReference(referenceVG);

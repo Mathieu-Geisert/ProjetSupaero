@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+    <name>intel_teleop</name>
+    <version>0.7.0</version>
+    <description>The intel_teleop package</description>
+    <maintainer email="diane.bury@isae.fr">Diane</maintainer>
+    <license>BSD</license>
+
+
+    <buildtool_depend>catkin</buildtool_depend>
+    <run_depend>intel_teleop_ground</run_depend>
+    <run_depend>intel_teleop_ui</run_depend>
+    <run_depend>intel_teleop_optcontrol</run_depend>
+    <run_depend>intel_teleop_msgs</run_depend>
+
+
+    <export>
+        <metapackage/>
+    </export>
+</package>

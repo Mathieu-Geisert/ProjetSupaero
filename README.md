@@ -1,40 +1,86 @@
-# Description of the project
+# IntelTeleop: a SUPAERO project
 
-The goal of this project is to showcase intelligent teleoperation for complex microdrones, which means adding a stabilising and obstacle avoidance loop to a human input for a quad-copter type microdrone.
+This project was the subject of a university assignement. Two different teams of students developped different approaches to the project. The 2016 team developped a demonstrator, while the 2017 team developped a integrated simulation. 
+(This file contains the same instructions as the README.md in the ProjetSupaero2017 folder)
 
-The end product features:
-- a simulator with a 3D viewer, which shows the drone in its obstacle riddled environment
-- an MPC control loop for stabilisation and obstacle avoidance
-- a simplified drone model, easily adaptable to a more complex model
-- an XML parser for simple description of different environments
-- a keyboard interface which can be easily modified to accept joysticks commands
+This project implements optimal control for a smart teleoperation for a drone as ROS modules. It uses the Hector Quadrotor package for the simulation through Gazebo.
 
-# How to install
+## Getting started
 
-This program relies on four external libraries which you must install first:
-- Gepetto viewer (https://github.com/humanoid-path-planner/gepetto-viewer and https://github.com/humanoid-path-planner/gepetto-viewer-corba)
-- ACADO (http://acado.github.io/)
-- SFML (http://www.sfml-dev.org/)
-- tynixml2 (https://github.com/leethomason/tinyxml2)
+Theses instructions will guide you through installing IntelTeleop.
 
-When these libraries are properly set up, proceed as following:
+### Prerequisites
+
+ROS Kinetic (full install) is required. See http://wiki.ros.org/ROS/Installation
+For example for Ubuntu, that would be:
+
 ```
-mkdir new/project/directory/ && cd new/project/directory/
-git clone https://github.com/rrazlapos/PIE-drone.git
-cd PIE-drone/ProjetSupaero
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+sudo apt-get update
+sudo apt-get install ros-kinetic-desktop-full
+```
+
+ACADO Toolkit is also required.
+
+```
+sudo apt-get install gcc g++ cmake git gnuplot doxygen graphviz
+
+git clone https://github.com/acado/acado.git -b stable ACADOtoolkit && cd ACADOtoolkit
+git reset --hard 88c441b6bedee039ef8cb81d34fcd9377fb6d138
 mkdir build && cd build
-cmake ..
-make
+cmake .. && make
+sudo make install
+```
+Le dossier ACADOtoolkit peut ensuite être supprimé.
+
+
+### Downloading IntelTeleop
+
+Download the IntelTeleop project from our github where you want it to be:
+
+```
+git clone --recursive https://github.com/DianeBury/IntelTeleop.git
 ```
 
-The executable files are in build/tests/.
+### Installing
 
-Run `test_sfml` to check if SFML installation was successful. You should see a window with a green disc pop up.
+Go in the 2017 project subfolder and launch the install script:
 
-Run `test_viewer` to check if gepetto installation was successful. You should see a window with a drone that you can move around with arrow keys, A, R, W, X, C, V, B and N. The red cylider shows the direction the drone is moving, for demonstration purposes. The mouse controls the camera.
-- in case of "terminate called after throwing an instance of 'CORBA::TRANSIENT'", make sure gepetto-viewer-server is running in background. You also have to restart gepetto-viewer-server every time you run one of the tests.
-- make sure that you have omniNames running in the background as well.
+```
+cd ProjetSupaero2017
+sh install.sh
+```
 
-Run `test_viewer_environment` to check if tinyXML installation was successful. You should see a window with a large slanted yellow cylinder.
+The script will setup your catkin workspace and will move 3 configuration files to Hector Quadrotor's submodules. Another way to do this would be to reference an updated fork of Hector containing the files, but we thought it would be a little overkill for the project.
 
-Run `ProjectSupaero` for the full program. You should be able to control the drone in the environment described in data/envsave.xml with arrow keys and A/R keys. The drone should avoid the obstacles. 
+Now source your catkin workspace with the following command when in catkin_ws:
+
+```
+source devel/setup.bash
+```
+
+## Running the demo
+
+In a terminal, run on of the following commands to run the demo using the keyboard (default) or the joystick:
+
+```
+roslaunch intel_teleop_demo demo.launch 
+```
+
+```
+roslaunch intel_teleop_demo demo.launch joystick:=true
+```
+
+This will launch Gazebo. You will see the drone surrounded by a test environnement. A terminal with the control node will open from which you can control the drone using the keyboard or the joystick depending on your choice. You should see how the drone avoids the obstacles as it flies.
+
+## Example
+
+## Authors
+
+* **Diane Bury**
+* **Alexis Nicolin**
+* **Bertrand Suderie**
+* **Steve Ravalisse**
+* **Andrea Brugnoli**
+* **Paolo Panicucci**

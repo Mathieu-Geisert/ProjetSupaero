@@ -19,11 +19,13 @@ class Viewer
 		void createDrone(const char*  t);
 		void moveDrone(double x, double y, double z, double roll, double pitch, double yaw);
 		void setArrow(int vx, int vy, int vz);
+		void addNode(double x, double y, double z);
 
 	private:
 		ClientCpp client;
 		WindowID w_id;
 		se3::SE3 se3Drone;
+		int nb_node_traj;
 
 };
 

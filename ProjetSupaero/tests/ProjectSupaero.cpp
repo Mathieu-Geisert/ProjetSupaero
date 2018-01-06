@@ -181,6 +181,7 @@ int main()
 
         // viewer takes roll-pitch-yaw but drone equations are in yaw-pitch-roll
         viewer.moveDrone(X(0), X(1), X(2), X(8), X(7), X(6));
+	viewer.addNode(X(0), X(1), X(2));
         viewer.setArrow((refInput[0]>0) - (refInput[0]<0), (refInput[1]>0) - (refInput[1]<0), (refInput[2]>0) - (refInput[2]<0));
 
         // MPC step

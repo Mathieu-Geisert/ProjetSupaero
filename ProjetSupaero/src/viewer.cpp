@@ -20,6 +20,7 @@ Viewer::Viewer(): client()
 
     se3Drone = se3::SE3::Identity();
     se3Drone.translation({0.,0.,2.});
+    nb_node_traj=0;
 }
 
 
@@ -161,7 +162,7 @@ void Viewer::moveDrone(double x, double y, double z, double roll, double pitch, 
     m_yaw(2,2) = 1.;
 
     //cout << m_yaw << endl;
-    se3Drone.rotation() = m_yaw.cast<float>() * m_pitch.cast<float>() * m_roll.cast<float>();
+    se3Drone.rotation() = m_roll.cast<float>() * m_pitch.cast<float>() * m_yaw.cast<float>();
     client.applyConfiguration("/world/drone", se3Drone);
     client.refresh();
 }
@@ -213,3 +214,12 @@ void Viewer::setArrow(int vx, int vy, int vz)
     client.applyConfiguration("/world/arrow", se3position) ;
 }
 
+void Viewer::addNode(double x, double y, double z)
+{
+	nb_node_traj++;
+	se3::SE3 se3position = se3::SE3::Identity();
+	se3position.translation({x, y, z});
+	float color[4] = {1.f,0.f,0.f,0.3f};
+	client.addSphere(("/world/env/traj"+std::to_string(nb_node_traj)).c_str(), 0.05, color);
+	client.applyConfiguration(("/world/env/traj"+std::to_string(nb_node_traj)).c_str(), se3position);
+}

@@ -14,7 +14,7 @@ std::array<double,6> Input::getReference()
 {
     std::array<double,6> consigne = {0,0,0,0,0,0};
 
-/*    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
     {
         //std::cout << "forward ";
         consigne[0] += 2;
@@ -78,8 +78,8 @@ std::array<double,6> Input::getReference()
         //std::cout << "downward ";
         consigne[5] += +2;
     }
-*/
-sf::Joystick::update();
+
+/*sf::Joystick::update();
 float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
 float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
 float r = sf::Joystick::getAxisPosition(0, sf::Joystick::R);
@@ -87,7 +87,7 @@ float r = sf::Joystick::getAxisPosition(0, sf::Joystick::R);
 consigne[0] = -x/50;
 consigne[1] = y/50;
 consigne[2] = -r/50;
-
+*/
     return consigne;
 }
 

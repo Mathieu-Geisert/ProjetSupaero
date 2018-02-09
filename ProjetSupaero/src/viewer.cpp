@@ -219,7 +219,7 @@ void Viewer::addNode(double x, double y, double z)
 	nb_node_traj++;
 	se3::SE3 se3position = se3::SE3::Identity();
 	se3position.translation({x, y, z});
-	float color[4] = {1.f,0.f,0.f,0.3f};
+	float color[4] = {1.f,0.f,0.f,1.f};
 	client.addSphere(("/world/env/traj"+std::to_string(nb_node_traj)).c_str(), 0.05, color);
 	client.applyConfiguration(("/world/env/traj"+std::to_string(nb_node_traj)).c_str(), se3position);
 }
